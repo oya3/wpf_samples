@@ -12,9 +12,10 @@ namespace WpfApp1.ViewModels
 
         public MainWindowViewModel()
         {
+            // 画面遷移に使うためだけのviewmodelインスタンス
             Main = new MainViewModel();
             Sub = new SubViewModel();
-            CurrentPage = Sub; //  Main;
+            CurrentPage = Main;
         }
 
         private object _CurrentPage;
@@ -80,8 +81,8 @@ namespace WpfApp1.ViewModels
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
-            var h = this.PropertyChanged;
-            if (h != null) { h(this, new PropertyChangedEventArgs(propertyName)); }
+            //var h = this.PropertyChanged;
+            //if (h != null) { h(this, new PropertyChangedEventArgs(propertyName)); }
         }
         /*
         private string name;

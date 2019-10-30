@@ -15,6 +15,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -46,7 +47,7 @@
         <DockPanel
             Grid.Row="1"
             Grid.Column="1">
-            <TextBox Text="{Binding Name,Mode=TwoWay}"
+            <TextBox Text="{Binding Person.Name,Mode=TwoWay}"
                 FontSize="12"/>
         </DockPanel>
         <DockPanel
@@ -60,8 +61,13 @@
             Grid.Row="2"
             Grid.Column="1">
             <TextBox 
-                Text="{Binding Mail}"
+                Text="{Binding Person.Mail}"
                 FontSize="12"/>
+        </DockPanel>
+        <DockPanel
+            Grid.Row="3"
+            Grid.Column="0">
+            <Button Command="{Binding ButtonCommand}" Content="戻る"/>
         </DockPanel>
     </Grid>
 </UserControl>

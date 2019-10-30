@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using WpfApp1.Models;
+
 
 namespace WpfApp1.ViewModels
 {
@@ -8,28 +10,28 @@ namespace WpfApp1.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public DelegateCommand _PageOneCommand;
+        public DelegateCommand _ButtonCommand;
 
         public MainViewModel()
         {
 
         }
-        protected void PageOne(object parameter)
-        {
-            //var navigationWindow = (NavigationWindow)Application.Current.MainWindow;
-            //navigationWindow.Navigate(new SecondPage(), parameter);
 
+        protected void Button(object parameter)
+        {
+            //  CurrentPage = (CurrentPage == Main) ? (object)Sub : (object)Main;
         }
-        public DelegateCommand PageOneCommand
+
+        public DelegateCommand ButtonCommand
         {
             get
             {
-                if (this._PageOneCommand == null)
+                if (this._ButtonCommand == null)
                 {
-                    this._PageOneCommand = new DelegateCommand(PageOne);
+                    this._ButtonCommand = new DelegateCommand(Button);
                 }
 
-                return this._PageOneCommand;
+                return this._ButtonCommand;
             }
         }
 
@@ -40,24 +42,12 @@ namespace WpfApp1.ViewModels
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
-            var h = this.PropertyChanged;
-            if (h != null) { h(this, new PropertyChangedEventArgs(propertyName)); }
+            //var h = this.PropertyChanged;
+            //if (h != null) { h(this, new PropertyChangedEventArgs(propertyName)); }
             
         }
-        private string name;
-        private string mail;
 
-        public string Name
-        {
-            get { return this.name; }
-            set { this.SetProperty(ref this.name, value); }
-        }
-
-        public string Mail
-        {
-            get { return this.mail; }
-            set { this.SetProperty(ref this.mail, value); }
-        }
+        public object Person { get; set; } = PersonModel.Instance;
 
     }
 }
