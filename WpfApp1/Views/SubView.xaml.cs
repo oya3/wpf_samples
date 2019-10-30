@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace WpfApp1.Views
 {
     /// <summary>
-    /// MainWindowView.xaml の相互作用ロジック
+    /// SubView.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindowView : Window
+    public partial class SubView : UserControl
     {
-        public MainWindowView()
+        public SubView()
         {
             InitializeComponent();
-
         }
     }
 }

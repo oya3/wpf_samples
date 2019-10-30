@@ -23,7 +23,7 @@ namespace WpfApp1.Views
         public MainView()
         {
             InitializeComponent();
-            this.DataContext = new WpfApp1.ViewModels.MainWindowViewModel{ Name = "ns taro", Mail = "taro@ns.com" };
+            this.DataContext = new WpfApp1.ViewModels.MainViewModel { Name = "ns taro", Mail = "taro@ns.com" };
         }
     }
 }

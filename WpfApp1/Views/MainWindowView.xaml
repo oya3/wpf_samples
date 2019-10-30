@@ -10,6 +10,13 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
+    
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:MainViewModel}">
+            <local:MainView />
+        </DataTemplate>
+    </Window.Resources>
+    
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="15*"/>
@@ -27,12 +34,18 @@
             Grid.ColumnSpan="2">
             <local:HeaderView x:Name="Header"/>
         </DockPanel>
-        <DockPanel
+        <!-- <DockPanel
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2">
             <local:MainView x:Name="Main"/>
-        </DockPanel>
+        </DockPanel> -->
+        <ContentControl
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Content="{Binding CurrentPage}"
+            />
         <DockPanel
             Grid.Row="2"
             Grid.Column="0"

@@ -4,62 +4,22 @@ using System.Windows.Input;
 
 namespace WpfApp1.ViewModels
 {
-    class MainWindowViewModel : INotifyPropertyChanged
+    class MainViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         public DelegateCommand _PageOneCommand;
 
-        public MainWindowViewModel()
+        public MainViewModel()
         {
-            Main = new MainViewModel();
-            Sub = new SubViewModel();
-            CurrentPage = Sub; //  Main;
-        }
 
-        private object _CurrentPage;
-        public object CurrentPage
-        {
-            get { return _CurrentPage; }
-            set
-            {
-                if (_CurrentPage != value)
-                {
-                    this.SetProperty(ref this._CurrentPage, value);
-                }
-            }
         }
-
-        private MainViewModel _Main;
-        public MainViewModel Main
-        {
-            get { return _Main; }
-            set
-            {
-                if (_Main != value)
-                {
-                    this.SetProperty(ref this._Main, value);
-                }
-            }
-        }
-        private SubViewModel _Sub;
-        public SubViewModel Sub
-        {
-            get { return _Sub; }
-            set
-            {
-                if (_Sub != value)
-                {
-                    this.SetProperty(ref this._Sub, value);
-                }
-            }
-        }
-
         protected void PageOne(object parameter)
         {
-            CurrentPage = (CurrentPage == Main) ? (object)Sub : (object)Main;
-        }
+            //var navigationWindow = (NavigationWindow)Application.Current.MainWindow;
+            //navigationWindow.Navigate(new SecondPage(), parameter);
 
+        }
         public DelegateCommand PageOneCommand
         {
             get
@@ -72,7 +32,7 @@ namespace WpfApp1.ViewModels
                 return this._PageOneCommand;
             }
         }
-        
+
         private void SetProperty<T>(ref T field, T value, [CallerMemberName]string propertyName = null)
         {
             field = value;
@@ -82,8 +42,8 @@ namespace WpfApp1.ViewModels
             }
             var h = this.PropertyChanged;
             if (h != null) { h(this, new PropertyChangedEventArgs(propertyName)); }
+            
         }
-        /*
         private string name;
         private string mail;
 
@@ -96,8 +56,8 @@ namespace WpfApp1.ViewModels
         public string Mail
         {
             get { return this.mail; }
-            set { }
+            set { this.SetProperty(ref this.mail, value); }
         }
-        */
+
     }
 }
