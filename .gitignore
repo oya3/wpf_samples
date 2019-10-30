@@ -1,0 +1,15 @@
+.vs/
+*.VC.db
+*.VC.VC.*
+*.vbw
+*.xls*
+.#*
+*.tmp
+*.suo
+*.log
+*.exe*
+obj/
+bin/
+GPATH
+GRTAGS
+GTAGS
