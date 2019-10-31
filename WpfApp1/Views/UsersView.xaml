@@ -12,10 +12,10 @@
     <UserControl.DataContext>
         <vm:UsersViewModel/>
     </UserControl.DataContext>
-    <ListView ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
+    <ListView x:Name="Users" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="SelectionChanged">
-                <i:InvokeCommandAction Command="{Binding SelectedUserEventCommand}" CommandParameter="xxx" />
+                <i:InvokeCommandAction Command="{Binding SelectedUserEventCommand}" CommandParameter="{Binding SelectedItem, ElementName=Users}" />
             </i:EventTrigger>
         </i:Interaction.Triggers>
         <ListView.View>

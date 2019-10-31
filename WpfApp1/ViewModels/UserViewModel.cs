@@ -11,7 +11,9 @@ namespace WpfApp1.ViewModels
 
         public UserViewModel()
         {
-            this.User = UsersModel.Instance.Users[0];
+            var selectedUser = (UserModel)Session.Instance.GetValue("SelectedItem");
+            if (null == selectedUser) return;
+            this.User = UsersModel.Instance.Users[selectedUser.ID];
         }
 
         public UserViewModel(object args = null)

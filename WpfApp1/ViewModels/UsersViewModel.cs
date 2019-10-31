@@ -17,7 +17,7 @@ namespace WpfApp1.ViewModels
         public DelegateCommand _SelectedUserEventCommand;
         protected void SelectedUserEvent(object parameter)
         {
-            // PageManager.Go("GoTo4Screen", this.SelectedUser);
+            Session.Instance.Set("SelectedItem", parameter);
             PageManager.Go("GoTo4Screen", this.SelectedUser);
         }
         public DelegateCommand SelectedUserEventCommand

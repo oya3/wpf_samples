@@ -12,7 +12,7 @@ namespace WpfApp1.ViewModels
         private Dictionary<string, object> Hash;
         private Session()
         {
-            Hash = new Dictionary<string, object>();
+            this.Hash = new Dictionary<string, object>();
         }
 
         public static Session Instance
@@ -22,24 +22,21 @@ namespace WpfApp1.ViewModels
                 return instance;
             }
         }
-        public bool Add(string key, object value)
+        public void Set(string key, object value)
         {
-            if (Hash.ContainsKey(key))
-                return false;
-            Hash.Add(key, value);
-            return true;
+            this.Hash[key] = value;
         }
         public object Remove(string key)
         {
-            if (!Hash.ContainsKey(key))
+            if (!this.Hash.ContainsKey(key))
                 return false;
-            return Hash.Remove(key);
+            return this.Hash.Remove(key);
         }
         public object GetValue(string key)
         {
-            if (!Hash.ContainsKey(key))
+            if (!this.Hash.ContainsKey(key))
                 return (object)null;
-            return Hash[key];
+            return this.Hash[key];
         }
     }
 }

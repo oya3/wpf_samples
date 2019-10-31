@@ -6,6 +6,7 @@ namespace WpfApp1.Models
 {
     class UserModel : INotifyPropertyChanged
     {
+        public int ID { get; set; }
         public string Name { get; set; }
         public string Mail { set; get; }
         public string Adderss { get; set; }
