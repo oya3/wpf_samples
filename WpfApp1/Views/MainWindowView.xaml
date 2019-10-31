@@ -12,11 +12,11 @@
     </Window.DataContext>
     
     <Window.Resources>
-        <DataTemplate DataType="{x:Type vm:MainViewModel}">
-            <local:MainView />
+        <DataTemplate DataType="{x:Type vm:PersonViewModel}">
+            <local:PersonView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:SubViewModel}">
-            <local:SubView />
+        <DataTemplate DataType="{x:Type vm:AnimalViewModel}">
+            <local:AnimalView />
         </DataTemplate>
     </Window.Resources>
     
@@ -41,7 +41,7 @@
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2">
-            <local:MainView x:Name="Main"/>
+            <local:PersonView x:Name="Main"/>
         </DockPanel> -->
         <ContentControl
             Grid.Row="1"

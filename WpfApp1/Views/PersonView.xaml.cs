@@ -16,13 +16,14 @@ using System.Windows.Shapes;
 namespace WpfApp1.Views
 {
     /// <summary>
-    /// SubView.xaml の相互作用ロジック
+    /// PersonView.xaml の相互作用ロジック
     /// </summary>
-    public partial class SubView : UserControl
+    public partial class PersonView : UserControl
     {
-        public SubView()
+        public PersonView()
         {
             InitializeComponent();
+            //this.DataContext = new WpfApp1.ViewModels.PersonViewModel { Name = "ns taro", Mail = "taro@ns.com" };
         }
     }
 }

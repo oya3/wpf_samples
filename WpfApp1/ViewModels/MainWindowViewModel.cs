@@ -8,13 +8,11 @@ namespace WpfApp1.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public DelegateCommand _PageOneCommand;
-
         public MainWindowViewModel()
         {
             // 画面遷移に使うためだけのviewmodelインスタンス
-            Main = new MainViewModel();
-            Sub = new SubViewModel();
+            Main = new PersonViewModel();
+            Sub = new AnimalViewModel();
             CurrentPage = Main;
         }
 
@@ -31,8 +29,8 @@ namespace WpfApp1.ViewModels
             }
         }
 
-        private MainViewModel _Main;
-        public MainViewModel Main
+        private PersonViewModel _Main;
+        public PersonViewModel Main
         {
             get { return _Main; }
             set
@@ -43,8 +41,8 @@ namespace WpfApp1.ViewModels
                 }
             }
         }
-        private SubViewModel _Sub;
-        public SubViewModel Sub
+        private AnimalViewModel _Sub;
+        public AnimalViewModel Sub
         {
             get { return _Sub; }
             set
@@ -56,6 +54,7 @@ namespace WpfApp1.ViewModels
             }
         }
 
+        public DelegateCommand _PageOneCommand;
         protected void PageOne(object parameter)
         {
             CurrentPage = (CurrentPage == Main) ? (object)Sub : (object)Main;
@@ -73,7 +72,26 @@ namespace WpfApp1.ViewModels
                 return this._PageOneCommand;
             }
         }
-        
+
+
+        public DelegateCommand _ButtonCommand;
+        protected void Button(object parameter)
+        {
+            PageOne(parameter);
+        }
+
+        public DelegateCommand ButtonCommand
+        {
+            get
+            {
+                if (this._ButtonCommand == null)
+                {
+                    this._ButtonCommand = new DelegateCommand(Button);
+                }
+
+                return this._ButtonCommand;
+            }
+        }
         private void SetProperty<T>(ref T field, T value, [CallerMemberName]string propertyName = null)
         {
             field = value;

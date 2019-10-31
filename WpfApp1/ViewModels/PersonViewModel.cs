@@ -6,17 +6,16 @@ using WpfApp1.Models;
 
 namespace WpfApp1.ViewModels
 {
-    class MainViewModel : INotifyPropertyChanged
+    class PersonViewModel //: INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        // public event PropertyChangedEventHandler PropertyChanged;
 
-        public DelegateCommand _ButtonCommand;
-
-        public MainViewModel()
+        public PersonViewModel()
         {
 
         }
 
+        public DelegateCommand _ButtonCommand;
         protected void Button(object parameter)
         {
             //  CurrentPage = (CurrentPage == Main) ? (object)Sub : (object)Main;
@@ -34,7 +33,7 @@ namespace WpfApp1.ViewModels
                 return this._ButtonCommand;
             }
         }
-
+        /*
         private void SetProperty<T>(ref T field, T value, [CallerMemberName]string propertyName = null)
         {
             field = value;
@@ -46,7 +45,7 @@ namespace WpfApp1.ViewModels
             //if (h != null) { h(this, new PropertyChangedEventArgs(propertyName)); }
             
         }
-
+        */
         public object Person { get; set; } = PersonModel.Instance;
 
     }

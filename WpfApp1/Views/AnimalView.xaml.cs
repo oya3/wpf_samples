@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace WpfApp1.Views
 {
     /// <summary>
-    /// MainView.xaml の相互作用ロジック
+    /// SubView.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainView : UserControl
+    public partial class AnimalView : UserControl
     {
-        public MainView()
+        public AnimalView()
         {
             InitializeComponent();
-            //this.DataContext = new WpfApp1.ViewModels.MainViewModel { Name = "ns taro", Mail = "taro@ns.com" };
         }
     }
 }
