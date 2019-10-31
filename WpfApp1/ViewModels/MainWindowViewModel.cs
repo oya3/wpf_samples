@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Input;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace WpfApp1.ViewModels
 {
@@ -8,56 +9,65 @@ namespace WpfApp1.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private List<IPageViewModel> _pageViewModels;
+        public List<IPageViewModel> PageViewModels
+        {
+            get
+            {
+                if (_pageViewModels == null)
+                    _pageViewModels = new List<IPageViewModel>();
+
+                return _pageViewModels;
+            }
+        }
+
+        private IPageViewModel _currentPageViewModel;
+        public IPageViewModel CurrentPageViewModel
+        {
+            get
+            {
+                return _currentPageViewModel;
+            }
+            set
+            {
+                this.SetProperty(ref this._currentPageViewModel, value);
+            }
+        }
+
+        private void ChangeViewModel(IPageViewModel viewModel)
+        {
+            if (!PageViewModels.Contains(viewModel))
+                PageViewModels.Add(viewModel);
+
+            CurrentPageViewModel = PageViewModels.FirstOrDefault(vm => vm == viewModel);
+        }
+
+        private void OnGo1Screen(object obj)
+        {
+            ChangeViewModel(PageViewModels[0]);
+        }
+
+        private void OnGo2Screen(object obj)
+        {
+            ChangeViewModel(PageViewModels[1]);
+        }
+
         public MainWindowViewModel()
         {
-            // 画面遷移に使うためだけのviewmodelインスタンス
-            Main = new PersonViewModel();
-            Sub = new AnimalViewModel();
-            CurrentPage = Main;
-        }
+            // Add available pages and set page
+            PageViewModels.Add(new PersonViewModel());
+            PageViewModels.Add(new AnimalViewModel());
 
-        private object _CurrentPage;
-        public object CurrentPage
-        {
-            get { return _CurrentPage; }
-            set
-            {
-                if (_CurrentPage != value)
-                {
-                    this.SetProperty(ref this._CurrentPage, value);
-                }
-            }
-        }
+            CurrentPageViewModel = PageViewModels[0];
 
-        private PersonViewModel _Main;
-        public PersonViewModel Main
-        {
-            get { return _Main; }
-            set
-            {
-                if (_Main != value)
-                {
-                    this.SetProperty(ref this._Main, value);
-                }
-            }
-        }
-        private AnimalViewModel _Sub;
-        public AnimalViewModel Sub
-        {
-            get { return _Sub; }
-            set
-            {
-                if (_Sub != value)
-                {
-                    this.SetProperty(ref this._Sub, value);
-                }
-            }
+            PageManager.Add("GoTo1Screen", OnGo1Screen);
+            PageManager.Add("GoTo2Screen", OnGo2Screen);
         }
 
         public DelegateCommand _PageOneCommand;
         protected void PageOne(object parameter)
         {
-            CurrentPage = (CurrentPage == Main) ? (object)Sub : (object)Main;
+            CurrentPageViewModel = (CurrentPageViewModel == PageViewModels[0]) ? PageViewModels[1] : PageViewModels[0];
         }
 
         public DelegateCommand PageOneCommand
@@ -73,25 +83,7 @@ namespace WpfApp1.ViewModels
             }
         }
 
-
-        public DelegateCommand _ButtonCommand;
-        protected void Button(object parameter)
-        {
-            PageOne(parameter);
-        }
-
-        public DelegateCommand ButtonCommand
-        {
-            get
-            {
-                if (this._ButtonCommand == null)
-                {
-                    this._ButtonCommand = new DelegateCommand(Button);
-                }
-
-                return this._ButtonCommand;
-            }
-        }
+        
         private void SetProperty<T>(ref T field, T value, [CallerMemberName]string propertyName = null)
         {
             field = value;
@@ -99,24 +91,6 @@ namespace WpfApp1.ViewModels
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
-            //var h = this.PropertyChanged;
-            //if (h != null) { h(this, new PropertyChangedEventArgs(propertyName)); }
         }
-        /*
-        private string name;
-        private string mail;
-
-        public string Name
-        {
-            get { return this.name; }
-            set { this.SetProperty(ref this.name, value); }
-        }
-
-        public string Mail
-        {
-            get { return this.mail; }
-            set { }
-        }
-        */
     }
 }

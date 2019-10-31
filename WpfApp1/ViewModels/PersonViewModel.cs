@@ -6,7 +6,7 @@ using WpfApp1.Models;
 
 namespace WpfApp1.ViewModels
 {
-    class PersonViewModel //: INotifyPropertyChanged
+    class PersonViewModel : IPageViewModel //, INotifyPropertyChanged
     {
         // public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,7 +18,7 @@ namespace WpfApp1.ViewModels
         public DelegateCommand _ButtonCommand;
         protected void Button(object parameter)
         {
-            //  CurrentPage = (CurrentPage == Main) ? (object)Sub : (object)Main;
+            PageManager.Go("GoTo2Screen");
         }
 
         public DelegateCommand ButtonCommand

@@ -47,7 +47,7 @@
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            Content="{Binding CurrentPage}"
+            Content="{Binding CurrentPageViewModel}"
             />
         <DockPanel
             Grid.Row="2"
