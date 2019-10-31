@@ -20,7 +20,7 @@ namespace WpfApp1.Models
         private void RaisePropertyChanged([CallerMemberName]string propertyName = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        private string _Name = "oya";
+        private string _Name;
         public string Name
         {
             get => _Name;
@@ -32,7 +32,7 @@ namespace WpfApp1.Models
                 RaisePropertyChanged();
             }
         }
-        private string _Mail = "oya@test.com";
+        private string _Mail;
         public string Mail
         {
             get => _Mail;

@@ -18,6 +18,12 @@
         <DataTemplate DataType="{x:Type vm:AnimalViewModel}">
             <local:AnimalView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:UsersViewModel}">
+            <local:UsersView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:UserViewModel}">
+            <local:UserView />
+        </DataTemplate>
     </Window.Resources>
     
     <Grid ShowGridLines="True">

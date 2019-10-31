@@ -46,10 +46,17 @@ namespace WpfApp1.ViewModels
         {
             ChangeViewModel(PageViewModels[0]);
         }
-
         private void OnGo2Screen(object obj)
         {
             ChangeViewModel(PageViewModels[1]);
+        }
+        private void OnGo3Screen(object obj)
+        {
+            ChangeViewModel(PageViewModels[2]);
+        }
+        private void OnGo4Screen(object obj)
+        {
+            ChangeViewModel(PageViewModels[3]);
         }
 
         public MainWindowViewModel()
@@ -57,33 +64,56 @@ namespace WpfApp1.ViewModels
             // Add available pages and set page
             PageViewModels.Add(new PersonViewModel());
             PageViewModels.Add(new AnimalViewModel());
+            PageViewModels.Add(new UsersViewModel());
+            PageViewModels.Add(new UserViewModel());
 
-            CurrentPageViewModel = PageViewModels[0];
+            CurrentPageViewModel = PageViewModels[2];
 
             PageManager.Add("GoTo1Screen", OnGo1Screen);
             PageManager.Add("GoTo2Screen", OnGo2Screen);
+            PageManager.Add("GoTo3Screen", OnGo3Screen);
+            PageManager.Add("GoTo4Screen", OnGo4Screen);
         }
 
-        public DelegateCommand _PageOneCommand;
-        protected void PageOne(object parameter)
+        public DelegateCommand _ToggleButtonCommand;
+        protected void ToggleButton(object parameter)
         {
             CurrentPageViewModel = (CurrentPageViewModel == PageViewModels[0]) ? PageViewModels[1] : PageViewModels[0];
         }
 
-        public DelegateCommand PageOneCommand
+        public DelegateCommand ToggleButtonCommand
         {
             get
             {
-                if (this._PageOneCommand == null)
+                if (this._ToggleButtonCommand == null)
                 {
-                    this._PageOneCommand = new DelegateCommand(PageOne);
+                    this._ToggleButtonCommand = new DelegateCommand(ToggleButton);
                 }
 
-                return this._PageOneCommand;
+                return this._ToggleButtonCommand;
             }
         }
 
-        
+        public DelegateCommand _UsersButtonCommand;
+        protected void UsersButton(object parameter)
+        {
+            CurrentPageViewModel = PageViewModels[2];
+        }
+
+        public DelegateCommand UsersButtonCommand
+        {
+            get
+            {
+                if (this._UsersButtonCommand == null)
+                {
+                    this._UsersButtonCommand = new DelegateCommand(UsersButton);
+                }
+
+                return this._UsersButtonCommand;
+            }
+        }
+
+
         private void SetProperty<T>(ref T field, T value, [CallerMemberName]string propertyName = null)
         {
             field = value;

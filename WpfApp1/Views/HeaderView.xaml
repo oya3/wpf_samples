@@ -20,9 +20,10 @@
                Grid.Row="0"/>
 
         <Button Content="人間／動物"
-                Command="{Binding PageOneCommand}"
+                Command="{Binding ToggleButtonCommand}"
                 Grid.Column="1"/>
-        <Button Content="btm2"
+        <Button Content="Users"
+                Command="{Binding UsersButtonCommand}"
                 Grid.Column="2"/>
         <Button Content="btm3"
                 Grid.Column="3"
