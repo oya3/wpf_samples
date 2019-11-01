@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace WpfApp1.ViewModels
 {

@@ -1,29 +1,22 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using WpfApp1.Models;
 
 namespace WpfApp1.ViewModels
 {
-    class UsersViewModel : IPageViewModel, INotifyPropertyChanged
+    class UsersViewModel : Common.BindableBase, IPageViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void RaisePropertyChanged([CallerMemberName]string propertyName = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-        public ObservableCollection<UserModel> Users { get; set; } = UsersModel.Instance.Users;
+        public ObservableCollection<Models.UserModel> Users { get; set; } = Models.UsersModel.Instance.Users;
 
         public UsersViewModel()
         {
         }
 
-        public UserModel SelectedUser { get; set; } // set Viewの選択状態が通知されているようにできる
+        public Models.UserModel SelectedUser { get; set; } // set Viewの選択状態が通知されているようにできる
 
         public DelegateCommand _SelectedUserEventCommand;
         protected void SelectedUserEvent(object parameter)
         {
-            Session.Instance.Set("SelectedUser", SelectedUser);
-            PageManager.ChangePage(new UserViewModel((UserModel)SelectedUser));
+            Common.Session.Instance.Set("SelectedUser", SelectedUser);
+            PageManager.ChangePage(new UserViewModel((Models.UserModel)SelectedUser));
         }
         public DelegateCommand SelectedUserEventCommand
         {

@@ -1,15 +1,8 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using WpfApp1.Models;
-
-
+﻿
 namespace WpfApp1.ViewModels
 {
-    class PersonViewModel : IPageViewModel //, INotifyPropertyChanged
+    class PersonViewModel : IPageViewModel
     {
-        // public event PropertyChangedEventHandler PropertyChanged;
-
         public PersonViewModel()
         {
 
@@ -33,20 +26,8 @@ namespace WpfApp1.ViewModels
                 return this._ButtonCommand;
             }
         }
-        /*
-        private void SetProperty<T>(ref T field, T value, [CallerMemberName]string propertyName = null)
-        {
-            field = value;
-            if (this.PropertyChanged != null)
-            {
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-            //var h = this.PropertyChanged;
-            //if (h != null) { h(this, new PropertyChangedEventArgs(propertyName)); }
-            
-        }
-        */
-        public object Person { get; set; } = PersonModel.Instance;
+ 
+        public object Person { get; set; } = Models.PersonModel.Instance;
 
     }
 }

@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace WpfApp1.Models
 {
-    class UsersModel : INotifyPropertyChanged
+    class UsersModel : Common.BindableBase
     {
         private static readonly UsersModel instance = new UsersModel();
         public ObservableCollection<UserModel> Users;
@@ -23,9 +23,5 @@ namespace WpfApp1.Models
                 return instance;
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void RaisePropertyChanged([CallerMemberName]string propertyName = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

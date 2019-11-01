@@ -62,9 +62,10 @@
     <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\UsersModel.cs" />
+    <Compile Include="Common\BindableBase.cs" />
     <Compile Include="ViewModels\IPageViewModel.cs" />
     <Compile Include="ViewModels\PageManager.cs" />
-    <Compile Include="ViewModels\Session.cs" />
+    <Compile Include="Common\Session.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\UsersViewModel.cs" />
     <Compile Include="Views\AnimalView.xaml.cs">

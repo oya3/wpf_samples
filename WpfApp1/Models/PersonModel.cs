@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace WpfApp1.Models
 {
-    public sealed class PersonModel : INotifyPropertyChanged
+    class PersonModel : Common.BindableBase
     {
         private static readonly PersonModel instance = new PersonModel();
         private PersonModel() { }
@@ -15,10 +15,6 @@ namespace WpfApp1.Models
                 return instance;
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void RaisePropertyChanged([CallerMemberName]string propertyName = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         private string _Name;
         public string Name

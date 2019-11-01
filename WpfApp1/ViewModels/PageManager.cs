@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace WpfApp1.ViewModels
 {
     public static class PageManager

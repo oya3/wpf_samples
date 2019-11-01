@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfApp1.ViewModels
+namespace WpfApp1.Common
 {
     class Session
     {
