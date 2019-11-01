@@ -6,8 +6,16 @@ namespace WpfApp1.ViewModels
     {
         public ObservableCollection<Models.UserModel> Users { get; set; } = Models.UsersModel.Instance.Users;
 
-        public UsersViewModel()
+        public UsersViewModel(Models.UserModel user = null)
         {
+            if(null == user)
+            {
+                SelectedUser = (Models.UserModel)Common.Session.Instance.GetValue("SelectedUser");
+            }
+            else
+            {
+                SelectedUser = user;
+            }
         }
 
         public Models.UserModel SelectedUser { get; set; } // set Viewの選択状態が通知されているようにできる
