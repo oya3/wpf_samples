@@ -29,7 +29,7 @@
         <DockPanel 
             Grid.Row="0"
             Grid.Column="1">
-            <TextBlock Text="{Binding User.Name}"/>
+            <TextBox Text="{Binding User.Name}"/>
         </DockPanel>
 
         <DockPanel 
@@ -40,7 +40,7 @@
         <DockPanel 
             Grid.Row="1"
             Grid.Column="1">
-            <TextBlock Text="{Binding User.Mail}"/>
+            <TextBox Text="{Binding User.Mail}"/>
         </DockPanel>
 
         <DockPanel 
@@ -51,7 +51,7 @@
         <DockPanel 
             Grid.Row="2"
             Grid.Column="1">
-            <TextBlock Text="{Binding User.Adderss}" />
+            <TextBox Text="{Binding User.Adderss}" />
         </DockPanel>
 
         <DockPanel 
@@ -62,7 +62,7 @@
         <DockPanel 
             Grid.Row="3"
             Grid.Column="1">
-            <TextBlock Text="{Binding User.Tel}"/>
+            <TextBox Text="{Binding User.Tel}"/>
         </DockPanel>
     </Grid>
 </UserControl>

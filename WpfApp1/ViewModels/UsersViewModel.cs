@@ -12,7 +12,7 @@ namespace WpfApp1.ViewModels
         {
         }
 
-        public UserViewModel SelectedUser { get; set; }
+        public UserViewModel SelectedUser { get; set; } // set Viewの選択状態が通知されているようにできる
 
         public DelegateCommand _SelectedUserEventCommand;
         protected void SelectedUserEvent(object parameter)
