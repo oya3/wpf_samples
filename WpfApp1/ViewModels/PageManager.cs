@@ -5,39 +5,11 @@ namespace WpfApp1.ViewModels
 {
     public static class PageManager
     {
-        private static IDictionary<string, List<Action<object>>> pl_dict =
-           new Dictionary<string, List<Action<object>>>();
-
-        public static void Add(string token, Action<object> callback)
+        public delegate void ChangePageDelegate(IPageViewModel page);
+        public static ChangePageDelegate ChangePageFunction;
+        public static void ChangePage(IPageViewModel page)
         {
-            if (!pl_dict.ContainsKey(token))
-            {
-                var list = new List<Action<object>>();
-                list.Add(callback);
-                pl_dict.Add(token, list);
-            }
-            else
-            {
-                bool found = false;
-                foreach (var item in pl_dict[token])
-                    if (item.Method.ToString() == callback.Method.ToString())
-                        found = true;
-                if (!found)
-                    pl_dict[token].Add(callback);
-            }
-        }
-
-        public static void Remove(string token, Action<object> callback)
-        {
-            if (pl_dict.ContainsKey(token))
-                pl_dict[token].Remove(callback);
-        }
-
-        public static void Go(string token, object args = null)
-        {
-            if (pl_dict.ContainsKey(token))
-                foreach (var callback in pl_dict[token])
-                    callback(args);
+            ChangePageFunction(page);
         }
     }
 }

@@ -7,9 +7,6 @@
              xmlns:vm="clr-namespace:WpfApp1.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
-        <vm:AnimalViewModel/>
-    </UserControl.DataContext>
     <Grid>
         <TextBox Text="動物だよ" />
     </Grid>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1.ViewModels
 {
-    interface IPageViewModel
+    public interface IPageViewModel
     {
     }
 }

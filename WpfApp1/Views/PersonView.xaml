@@ -7,9 +7,6 @@
              xmlns:vm="clr-namespace:WpfApp1.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
-        <vm:PersonViewModel/>
-    </UserControl.DataContext>
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

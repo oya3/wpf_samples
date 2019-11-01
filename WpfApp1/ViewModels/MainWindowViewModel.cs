@@ -7,20 +7,8 @@ namespace WpfApp1.ViewModels
 {
     class MainWindowViewModel : INotifyPropertyChanged
     {
+        private int toggleValue;
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private List<IPageViewModel> _pageViewModels;
-        public List<IPageViewModel> PageViewModels
-        {
-            get
-            {
-                if (_pageViewModels == null)
-                    _pageViewModels = new List<IPageViewModel>();
-
-                return _pageViewModels;
-            }
-        }
-
         private IPageViewModel _currentPageViewModel;
         public IPageViewModel CurrentPageViewModel
         {
@@ -34,51 +22,31 @@ namespace WpfApp1.ViewModels
             }
         }
 
-        private void ChangeViewModel(IPageViewModel viewModel)
-        {
-            if (!PageViewModels.Contains(viewModel))
-                PageViewModels.Add(viewModel);
-
-            CurrentPageViewModel = PageViewModels.FirstOrDefault(vm => vm == viewModel);
-        }
-
-        private void OnGo1Screen(object obj)
-        {
-            ChangeViewModel(PageViewModels[0]);
-        }
-        private void OnGo2Screen(object obj)
-        {
-            ChangeViewModel(PageViewModels[1]);
-        }
-        private void OnGo3Screen(object obj)
-        {
-            ChangeViewModel(PageViewModels[2]);
-        }
-        private void OnGo4Screen(object obj)
-        {
-            ChangeViewModel(PageViewModels[3]);
-        }
-
         public MainWindowViewModel()
         {
-            // Add available pages and set page
-            PageViewModels.Add(new PersonViewModel());
-            PageViewModels.Add(new AnimalViewModel());
-            PageViewModels.Add(new UsersViewModel());
-            PageViewModels.Add(new UserViewModel());
+            this.toggleValue = 0;
+            CurrentPageViewModel = new PersonViewModel();
+            PageManager.ChangePageFunction = new PageManager.ChangePageDelegate(ChangePage);
+        }
 
-            CurrentPageViewModel = PageViewModels[2];
-
-            PageManager.Add("GoTo1Screen", OnGo1Screen);
-            PageManager.Add("GoTo2Screen", OnGo2Screen);
-            PageManager.Add("GoTo3Screen", OnGo3Screen);
-            PageManager.Add("GoTo4Screen", OnGo4Screen);
+        private void ChangePage(IPageViewModel page)
+        {
+            CurrentPageViewModel = page;
         }
 
         public DelegateCommand _ToggleButtonCommand;
         protected void ToggleButton(object parameter)
         {
-            CurrentPageViewModel = (CurrentPageViewModel == PageViewModels[0]) ? PageViewModels[1] : PageViewModels[0];
+            if(this.toggleValue==0)
+            {
+                CurrentPageViewModel = new AnimalViewModel();
+            }
+            else
+            {
+                CurrentPageViewModel = new PersonViewModel();
+            }
+            this.toggleValue += 1;
+            this.toggleValue &= 1;
         }
 
         public DelegateCommand ToggleButtonCommand
@@ -97,7 +65,7 @@ namespace WpfApp1.ViewModels
         public DelegateCommand _UsersButtonCommand;
         protected void UsersButton(object parameter)
         {
-            CurrentPageViewModel = PageViewModels[2];
+            CurrentPageViewModel = new UsersViewModel();
         }
 
         public DelegateCommand UsersButtonCommand

@@ -18,7 +18,7 @@ namespace WpfApp1.ViewModels
         public DelegateCommand _ButtonCommand;
         protected void Button(object parameter)
         {
-            PageManager.Go("GoTo2Screen");
+            PageManager.ChangePage(new UsersViewModel());
         }
 
         public DelegateCommand ButtonCommand

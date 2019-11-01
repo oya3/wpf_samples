@@ -9,18 +9,10 @@ namespace WpfApp1.ViewModels
     {
         public object User { get; set; }
 
-        public UserViewModel()
+        public UserViewModel(UserModel user)
         {
-            var selectedUser = (UserModel)Session.Instance.GetValue("SelectedItem");
-            if (null == selectedUser) return;
-            this.User = UsersModel.Instance.Users[selectedUser.ID];
+            this.User = user;
         }
-
-        public UserViewModel(object args = null)
-        {
-            this.User = UsersModel.Instance.Users[0];
-        }
-
         /*
         public event PropertyChangedEventHandler PropertyChanged;
         private void RaisePropertyChanged([CallerMemberName]string propertyName = null)
