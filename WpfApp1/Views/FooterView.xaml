@@ -4,13 +4,55 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.Views"
+             xmlns:vm="clr-namespace:WpfApp1.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <DockPanel Background="#d0d">
-            <Label 
-                Content="footer"
-                FontSize="24"/>
+
+    <UserControl.DataContext>
+        <vm:FooterViewModel/>
+    </UserControl.DataContext>
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="15*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel 
+            Grid.Row="0"
+            Grid.Column="0">
+            <Button Content="UesrsList" />
+        </DockPanel>
+        <StackPanel Orientation=" Horizontal"
+            Grid.Row="0"
+            Grid.Column="1">
+            <Button Content="←" Width="15" />
+            <ListView Width="335" ItemsSource="{Binding Users}" SelectionMode="Extended" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#d0d">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="100" Height="110">
+                            <StackPanel>
+                                <TextBox Text="{Binding ID}"/>
+                                <TextBox Text="{Binding Name}"/>
+                                <TextBox Text="{Binding Mail}"/>
+                                <TextBox Text="{Binding Tel}"/>
+                                <TextBox Text="{Binding Address}"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Content="→" Width="15" />
+        </StackPanel>
+        <DockPanel 
+            Grid.Row="0"
+            Grid.Column="2">
+            <Button Content="UesrsList" />
         </DockPanel>
     </Grid>
+
 </UserControl>

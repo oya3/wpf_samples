@@ -17,7 +17,7 @@ namespace WpfApp1.Models
                 user.ID = index;
                 user.Name = string.Format("{0:D3}", index) + "name";
                 user.Mail = string.Format("{0:D3}", index) + "mail";
-                user.Adderss = string.Format("{0:D3}", index) + "address";
+                user.Address = string.Format("{0:D3}", index) + "address";
                 user.Tel = string.Format("{0:D2}", index) + "-000-0000";
                 this.Users.Add(user);
             }

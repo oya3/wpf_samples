@@ -63,6 +63,8 @@
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\UsersModel.cs" />
     <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="ViewModels\FooterViewModel.cs" />
+    <Compile Include="ViewModels\GridUsersViewModel.cs" />
     <Compile Include="ViewModels\IPageViewModel.cs" />
     <Compile Include="ViewModels\PageManager.cs" />
     <Compile Include="Common\Session.cs" />
@@ -70,6 +72,9 @@
     <Compile Include="ViewModels\UsersViewModel.cs" />
     <Compile Include="Views\AnimalView.xaml.cs">
       <DependentUpon>AnimalView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GridUsersView.xaml.cs">
+      <DependentUpon>GridUsersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UsersView.xaml.cs">
       <DependentUpon>UsersView.xaml</DependentUpon>
@@ -82,6 +87,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FooterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GridUsersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

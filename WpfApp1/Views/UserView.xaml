@@ -48,7 +48,7 @@
         <DockPanel 
             Grid.Row="2"
             Grid.Column="1">
-            <TextBox Text="{Binding User.Adderss}" />
+            <TextBox Text="{Binding User.Address}" />
         </DockPanel>
 
         <DockPanel 

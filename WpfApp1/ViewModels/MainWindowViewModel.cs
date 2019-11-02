@@ -46,7 +46,6 @@ namespace WpfApp1.ViewModels
             this.toggleValue += 1;
             this.toggleValue &= 1;
         }
-
         public DelegateCommand ToggleButtonCommand
         {
             get
@@ -65,7 +64,6 @@ namespace WpfApp1.ViewModels
         {
             CurrentPageViewModel = new UsersViewModel();
         }
-
         public DelegateCommand UsersButtonCommand
         {
             get
@@ -79,6 +77,23 @@ namespace WpfApp1.ViewModels
             }
         }
 
+        public DelegateCommand _GridUsersButtonCommand;
+        protected void GridUsersButton(object parameter)
+        {
+            CurrentPageViewModel = new GridUsersViewModel();
+        }
+        public DelegateCommand GridUsersButtonCommand
+        {
+            get
+            {
+                if (this._GridUsersButtonCommand == null)
+                {
+                    this._GridUsersButtonCommand = new DelegateCommand(GridUsersButton);
+                }
+
+                return this._GridUsersButtonCommand;
+            }
+        }
 
         private void SetProperty<T>(ref T field, T value, [CallerMemberName]string propertyName = null)
         {

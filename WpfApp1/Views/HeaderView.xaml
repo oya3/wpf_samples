@@ -25,7 +25,8 @@
         <Button Content="Users"
                 Command="{Binding UsersButtonCommand}"
                 Grid.Column="2"/>
-        <Button Content="btm3"
+        <Button Content="GridUsers"
+                Command="{Binding GridUsersButtonCommand}"
                 Grid.Column="3"
                 Grid.ColumnSpan="2"/>
         <Button Content="btm5"
