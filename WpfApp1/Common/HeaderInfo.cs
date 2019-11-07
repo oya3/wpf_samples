@@ -21,10 +21,10 @@ namespace WpfApp1.Common
         public int h;
     }
     
-    public class @string
+    public class HeaderInfo
     {
-        public @string() { }
-        public @string(int number, Rectangle rectangle)
+        public HeaderInfo() { }
+        public HeaderInfo(int number, Rectangle rectangle)
         {
             this.Number = number;
             this.Rectangle = rectangle;
