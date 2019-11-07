@@ -78,6 +78,6 @@
             Grid.Column="2">
             <local:InfoView x:Name="Info"/>
         </DockPanel>
-
+        <local:HeaderView HeaderInfo="{Binding HeaderInfo}" />
     </Grid>
 </Window>

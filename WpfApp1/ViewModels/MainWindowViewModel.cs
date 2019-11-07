@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using WpfApp1.Common;
 
 namespace WpfApp1.ViewModels
 {
@@ -20,11 +21,27 @@ namespace WpfApp1.ViewModels
             }
         }
 
+        private string _HeaderInfo;
+        public string HeaderInfo
+        {
+            get
+            {
+                return _HeaderInfo;
+            }
+            set
+            {
+                this.SetProperty(ref this._HeaderInfo, value);
+            }
+        }
+
         public MainWindowViewModel()
         {
+            this.HeaderInfo = "tesettesttest";
+            // this.HeaderInfo = new @string(1, new Rectangle(2, 3, 4, 5));
             this.toggleValue = 0;
             CurrentPageViewModel = new PersonViewModel();
             PageManager.ChangePageFunction = new PageManager.ChangePageDelegate(ChangePage);
+
         }
 
         private void ChangePage(IPageViewModel page)
