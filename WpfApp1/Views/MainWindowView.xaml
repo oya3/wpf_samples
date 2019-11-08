@@ -47,7 +47,8 @@
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="2">
-            <local:HeaderView x:Name="Header"/>
+            <!-- <local:HeaderView x:Name="Header"/> -->
+            <local:HeaderView HeaderInfo="{Binding HeaderInfo}" />
         </DockPanel>
         <!-- <DockPanel
             Grid.Row="1"
@@ -78,6 +79,6 @@
             Grid.Column="2">
             <local:InfoView x:Name="Info"/>
         </DockPanel>
-        <local:HeaderView HeaderInfo="{Binding HeaderInfo}" />
+       
     </Grid>
 </Window>

@@ -24,14 +24,14 @@ namespace WpfApp1.Views
         // 1. 依存プロパティの作成
         public static readonly DependencyProperty HeaderInfoProperty =
             DependencyProperty.Register("HeaderInfo",
-                                        typeof(string),
+                                        typeof(HeaderInfo),
                                         typeof(HeaderView),
-                                        new FrameworkPropertyMetadata("HeaderInfo", new PropertyChangedCallback(OnTitleChanged)));
+                                        new FrameworkPropertyMetadata(new HeaderInfo(), new PropertyChangedCallback(OnTitleChanged)));
 
         // 2. CLI用プロパティを提供するラッパー
-        public string HeaderInfo
+        public HeaderInfo HeaderInfo
         {
-            get { return (string)GetValue(HeaderInfoProperty); }
+            get { return (HeaderInfo)GetValue(HeaderInfoProperty); }
             set { SetValue(HeaderInfoProperty, value); }
         }
 
@@ -43,13 +43,11 @@ namespace WpfApp1.Views
             if (ctrl != null)
             {
                 var headerinfo = ctrl.HeaderInfo;
-                System.Diagnostics.Debug.WriteLine(string.Format("headerinfo: {0}", headerinfo));
-                /*
+                //System.Diagnostics.Debug.WriteLine(string.Format("headerinfo: {0}", headerinfo));
                 System.Diagnostics.Debug.WriteLine(string.Format("headerinfo: number{0}, rectangle:{1}{2}{3}{4}",
                     headerinfo.Number,
                     headerinfo.Rectangle.x, headerinfo.Rectangle.y,
                     headerinfo.Rectangle.w, headerinfo.Rectangle.h));
-                    */
             }
         }
         public HeaderView()
