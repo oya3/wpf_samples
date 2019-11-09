@@ -6,9 +6,11 @@ namespace WpfApp1.ViewModels
         public FooterViewModel(Models.UserModel user = null) : base(user)
         {
         }
+        
         public FooterViewModel() : base(null)
         {
         }
+        
         /*
         public DelegateCommand _UsersButtonCommand;
         protected void UsersButton(object parameter)

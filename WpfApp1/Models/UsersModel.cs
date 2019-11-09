@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace WpfApp1.Models
 {
-    class UsersModel : Common.BindableBase
+    class UsersModel //: Common.BindableBase
     {
         private static readonly UsersModel instance = new UsersModel();
         public ObservableCollection<UserModel> Users;
