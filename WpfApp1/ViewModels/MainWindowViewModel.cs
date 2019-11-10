@@ -4,20 +4,20 @@ using WpfApp1.Common;
 
 namespace WpfApp1.ViewModels
 {
-    class MainWindowViewModel : INotifyPropertyChanged
+    class MainWindowViewModel : Common.BindableBase // INotifyPropertyChanged
     {
         private int toggleValue;
-        public event PropertyChangedEventHandler PropertyChanged;
         private IPageViewModel _currentPageViewModel;
         public IPageViewModel CurrentPageViewModel
         {
             get
             {
-                return _currentPageViewModel;
+                return this._currentPageViewModel;
             }
             set
             {
-                this.SetProperty(ref this._currentPageViewModel, value);
+                this._currentPageViewModel = value;
+                RaisePropertyChanged();
             }
         }
 
@@ -26,11 +26,12 @@ namespace WpfApp1.ViewModels
         {
             get
             {
-                return _HeaderInfo;
+                return this._HeaderInfo;
             }
             set
             {
-                this.SetProperty(ref this._HeaderInfo, value);
+                this._HeaderInfo = value;
+                RaisePropertyChanged();
             }
         }
 
@@ -109,15 +110,6 @@ namespace WpfApp1.ViewModels
                 }
 
                 return this._GridUsersButtonCommand;
-            }
-        }
-
-        private void SetProperty<T>(ref T field, T value, [CallerMemberName]string propertyName = null)
-        {
-            field = value;
-            if (this.PropertyChanged != null)
-            {
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }
